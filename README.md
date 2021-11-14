@@ -8,7 +8,7 @@
 - Sequential 함수로 딥러닝의 구조를 한층 씩 쌓아올릴 수 있도록 만들어 줌.
 - Model.add를 사용하여 필요한 층을 차례로 추가하게 된다. 
 
-"""python
+'''python
 from tensorflow.keras.models import Sequential
 
 from tensorflow.keras.layers import Dense
@@ -34,13 +34,13 @@ np.random.seed(3)
 tf.random.set_seed(3)
 
 data_set = np.loadtxt('dataset/ThoraricSurgery.csv', delimiter = ',')
-"""
+'''
 
 **실제 딥러닝 시행부분** 
 
 (딥러닝 구조 결정)
 
-"""python
+'''python
 model = Sequential()
 
 model.add(Dense(30, input\_dim = 17, activation = 'relu'))
@@ -52,7 +52,7 @@ model.add(Dense(1, activation = 'sigmoid'))
 model.compile(loss='binary\_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 model.fit(X, y, epochs = 100, batch\_size = 10)
-"""
+'''
 
 층을 얼마나 쌓을지 결정하는 것은 데이터의 형태에 따라 다르다. 하지만, 캐라스는 model.add로 필요한 만큼의 층을 쉽게 쌓을 수 있다는 장점을 가지고 있다.
 
@@ -71,7 +71,7 @@ model.fit(X, y, epochs = 100, batch\_size = 10)
 
 
 NL 해보기
-"""python
+'''python
 import tensorflow as tf
 
 import numpy as np
@@ -101,17 +101,18 @@ model.compile(loss = 'mse', optimizer = 'sgd', metrics = ['mse'])
 model.fit(X, y, batch\_size = 1, epochs = 30)
 
 predict = model.predict(data)
+'''
 
-"""python
+'''python
 plt.plot(data, predict, 'b', data, y, 'k.')
 
 plt.show()
-"""
+'''
 
 
-"""python
+'''python
 model.fit(X, y, batch\_size = 1, epochs = 30)
-"""
+
 
 output
 
@@ -128,6 +129,7 @@ Epoch 2/30
 Epoch 30/30
 
 200/200 [==============================] - 0s 1ms/step - loss: 0.1033 - mse: 0.1033
+'''
 
 위에서는 epochs를 30으로 했지만, 만약 100으로 지정한다면 loss값이 감소하다가 향상되는 것을 확인할 수 있음. 즉, Epochs를 늘린다고 해서 loss값이 무조건 줄어드는 것은 아니다. 이런 것을 over-fitting이라고 한다.
 
