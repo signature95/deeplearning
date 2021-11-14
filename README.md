@@ -9,49 +9,49 @@
 - Model.add를 사용하여 필요한 층을 차례로 추가하게 된다. 
 
 '''python
-from tensorflow.keras.models import Sequential
+  from tensorflow.keras.models import Sequential
 
-from tensorflow.keras.layers import Dense
+  from tensorflow.keras.layers import Dense
 
-import numpy as np
+  import numpy as np
 
-import tensorflow as tf
+  import tensorflow as tf
 
-import pandas as pd
+  import pandas as pd
 
-(데이터 불러오기)
+  (데이터 불러오기)
 
-data = pd.read_csv('dataset/ThoraricSurgery(1).csv', encoding = 'utf-8')
+  data = pd.read_csv('dataset/ThoraricSurgery(1).csv', encoding = 'utf-8')
 
-(feature, target 분리)
+  (feature, target 분리)
 
-X = data_set[:, 0:17]
+  X = data_set[:, 0:17]
 
-y = data_set[:, 17]
+  y = data_set[:, 17]
 
-np.random.seed(3)
+  np.random.seed(3)
 
-tf.random.set_seed(3)
+  tf.random.set_seed(3)
 
-data_set = np.loadtxt('dataset/ThoraricSurgery.csv', delimiter = ',')
-'''
+  data_set = np.loadtxt('dataset/ThoraricSurgery.csv', delimiter = ',')
+  '''
 
 **실제 딥러닝 시행부분** 
 
 (딥러닝 구조 결정)
 
 '''python
-model = Sequential()
+  model = Sequential()
 
-model.add(Dense(30, input\_dim = 17, activation = 'relu'))
+  model.add(Dense(30, input\_dim = 17, activation = 'relu'))
 
-model.add(Dense(1, activation = 'sigmoid'))
+  model.add(Dense(1, activation = 'sigmoid'))
 
-(딥러닝 실행)
+  (딥러닝 실행)
 
-model.compile(loss='binary\_crossentropy', optimizer='adam', metrics=['accuracy'])
+  model.compile(loss='binary\_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-model.fit(X, y, epochs = 100, batch\_size = 10)
+  model.fit(X, y, epochs = 100, batch\_size = 10)
 '''
 
 층을 얼마나 쌓을지 결정하는 것은 데이터의 형태에 따라 다르다. 하지만, 캐라스는 model.add로 필요한 만큼의 층을 쉽게 쌓을 수 있다는 장점을 가지고 있다.
@@ -72,63 +72,63 @@ model.fit(X, y, epochs = 100, batch\_size = 10)
 
 NL 해보기
 '''python
-import tensorflow as tf
+  import tensorflow as tf
 
-import numpy as np
+  import numpy as np
 
-import matplotlib.pyplot as plt
+  import matplotlib.pyplot as plt
 
-import pandas as pd
+  import pandas as pd
 
-from tensorflow.keras.models import Sequential
+  from tensorflow.keras.models import Sequential
 
-from tensorflow.keras.layers import Dense
+  from tensorflow.keras.layers import Dense
 
-가상데이터 생성
+  가상데이터 생성
 
-X = data = np.linspace(1,2,200)
+  X = data = np.linspace(1,2,200)
 
-y = X\*4 + np.random.randn(200)\*0.3
+  y = X\*4 + np.random.randn(200)\*0.3
 
-model = Sequential()
+  model = Sequential()
 
-model.add(Dense(1, input\_dim=1, activation = 'linear'))
+  model.add(Dense(1, input\_dim=1, activation = 'linear'))
 
-\# tf.keras.models.Sequential, tf.keras.layer.Dense -> from import로 생략
+  \# tf.keras.models.Sequential, tf.keras.layer.Dense -> from import로 생략
 
-model.compile(loss = 'mse', optimizer = 'sgd', metrics = ['mse'])
+  model.compile(loss = 'mse', optimizer = 'sgd', metrics = ['mse'])
 
-model.fit(X, y, batch\_size = 1, epochs = 30)
+  model.fit(X, y, batch\_size = 1, epochs = 30)
 
-predict = model.predict(data)
+  predict = model.predict(data)
 '''
 
 '''python
-plt.plot(data, predict, 'b', data, y, 'k.')
+  plt.plot(data, predict, 'b', data, y, 'k.')
 
-plt.show()
+  plt.show()
 '''
 
 
 '''python
-model.fit(X, y, batch\_size = 1, epochs = 30)
+  model.fit(X, y, batch\_size = 1, epochs = 30)
 
 
-output
+  output
 
-Epoch 1/30
+  Epoch 1/30
 
-200/200 [==============================] - 1s 1ms/step - loss: 1.2804 - mse: 1.2804
+  200/200 [==============================] - 1s 1ms/step - loss: 1.2804 - mse: 1.2804
 
-Epoch 2/30
+  Epoch 2/30
 
-200/200 [==============================] - 0s 1ms/step - loss: 0.1637 - mse: 0.1637
+  200/200 [==============================] - 0s 1ms/step - loss: 0.1637 - mse: 0.1637
 
-…
+  …
 
-Epoch 30/30
+  Epoch 30/30
 
-200/200 [==============================] - 0s 1ms/step - loss: 0.1033 - mse: 0.1033
+  200/200 [==============================] - 0s 1ms/step - loss: 0.1033 - mse: 0.1033
 '''
 
 위에서는 epochs를 30으로 했지만, 만약 100으로 지정한다면 loss값이 감소하다가 향상되는 것을 확인할 수 있음. 즉, Epochs를 늘린다고 해서 loss값이 무조건 줄어드는 것은 아니다. 이런 것을 over-fitting이라고 한다.
