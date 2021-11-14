@@ -8,6 +8,7 @@
 - Sequential 함수로 딥러닝의 구조를 한층 씩 쌓아올릴 수 있도록 만들어 줌.
 - Model.add를 사용하여 필요한 층을 차례로 추가하게 된다. 
 
+"""python
 from tensorflow.keras.models import Sequential
 
 from tensorflow.keras.layers import Dense
@@ -20,24 +21,26 @@ import pandas as pd
 
 (데이터 불러오기)
 
-data = pd.read\_csv('dataset/ThoraricSurgery(1).csv', encoding = 'utf-8')
+data = pd.read_csv('dataset/ThoraricSurgery(1).csv', encoding = 'utf-8')
 
 (feature, target 분리)
 
-X = data\_set[:, 0:17]
+X = data_set[:, 0:17]
 
-y = data\_set[:, 17]
+y = data_set[:, 17]
 
 np.random.seed(3)
 
-tf.random.set\_seed(3)
+tf.random.set_seed(3)
 
-data\_set = np.loadtxt('dataset/ThoraricSurgery.csv', delimiter = ',')
+data_set = np.loadtxt('dataset/ThoraricSurgery.csv', delimiter = ',')
+"""
 
 **실제 딥러닝 시행부분** 
 
 (딥러닝 구조 결정)
 
+"""python
 model = Sequential()
 
 model.add(Dense(30, input\_dim = 17, activation = 'relu'))
@@ -49,7 +52,7 @@ model.add(Dense(1, activation = 'sigmoid'))
 model.compile(loss='binary\_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 model.fit(X, y, epochs = 100, batch\_size = 10)
-
+"""
 
 층을 얼마나 쌓을지 결정하는 것은 데이터의 형태에 따라 다르다. 하지만, 캐라스는 model.add로 필요한 만큼의 층을 쉽게 쌓을 수 있다는 장점을 가지고 있다.
 
@@ -68,7 +71,7 @@ model.fit(X, y, epochs = 100, batch\_size = 10)
 
 
 NL 해보기
-
+"""python
 import tensorflow as tf
 
 import numpy as np
@@ -97,17 +100,18 @@ model.compile(loss = 'mse', optimizer = 'sgd', metrics = ['mse'])
 
 model.fit(X, y, batch\_size = 1, epochs = 30)
 
-
 predict = model.predict(data)
 
+"""python
 plt.plot(data, predict, 'b', data, y, 'k.')
 
 plt.show()
+"""
 
 
-
-
+"""python
 model.fit(X, y, batch\_size = 1, epochs = 30)
+"""
 
 output
 
