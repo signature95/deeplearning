@@ -7,8 +7,11 @@
 
 - Sequential 함수로 딥러닝의 구조를 한층 씩 쌓아올릴 수 있도록 만들어 줌.
 - Model.add를 사용하여 필요한 층을 차례로 추가하게 된다. 
-
+'''
+print('_')
+'''
 '''python
+
   from tensorflow.keras.models import Sequential
 
   from tensorflow.keras.layers import Dense
@@ -52,6 +55,7 @@
   model.compile(loss='binary\_crossentropy', optimizer='adam', metrics=['accuracy'])
 
   model.fit(X, y, epochs = 100, batch\_size = 10)
+  
 '''
 
 층을 얼마나 쌓을지 결정하는 것은 데이터의 형태에 따라 다르다. 하지만, 캐라스는 model.add로 필요한 만큼의 층을 쉽게 쌓을 수 있다는 장점을 가지고 있다.
