@@ -7,13 +7,7 @@
 
 - Sequential 함수로 딥러닝의 구조를 한층 씩 쌓아올릴 수 있도록 만들어 줌.
 - Model.add를 사용하여 필요한 층을 차례로 추가하게 된다. 
-'''
-print('_')
-'''
-'''python
 
-  import FLASK_APP
-  
 '''
 
   from tensorflow.keras.models import Sequential
